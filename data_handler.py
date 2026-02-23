@@ -227,6 +227,33 @@ def get_stock_info(ticker: str) -> dict:
         except Exception:
             pass
 
+    # Fallback: use yfinance library for market cap (works on cloud deployments)
+    if not info.get("marketCap") and HAS_YFINANCE:
+        try:
+            stock = yf.Ticker(ticker)
+            # Try fast_info first (faster, less likely to be rate-limited)
+            try:
+                fi = stock.fast_info
+                mcap = getattr(fi, "market_cap", None)
+                if mcap and mcap > 0:
+                    info["marketCap"] = mcap
+            except Exception:
+                pass
+            # If fast_info didn't work, try .info
+            if not info.get("marketCap"):
+                try:
+                    yf_info = stock.info
+                    mcap = yf_info.get("marketCap")
+                    if mcap and mcap > 0:
+                        info["marketCap"] = mcap
+                    # Also fill in missing name
+                    if not info.get("longName"):
+                        info["longName"] = yf_info.get("longName", yf_info.get("shortName", ticker))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
     return info
 
 
