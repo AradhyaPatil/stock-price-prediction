@@ -1,8 +1,8 @@
-# 📈 StockAI — Stock Market Price Prediction
+# Stock Market Price Prediction
 
 An AI-powered stock price prediction app using **LSTM deep learning** with an interactive **Streamlit** web dashboard.
 
-## ✨ Features
+## Features
 
 - **Live Data** — Fetches real-time stock data from Yahoo Finance
 - **LSTM Neural Network** — Stacked LSTM with Dropout for time-series forecasting
@@ -12,7 +12,7 @@ An AI-powered stock price prediction app using **LSTM deep learning** with an in
 - **Premium Dark UI** — Modern glassmorphism design with gradient accents
 - **Global Stocks** — Works with US (`AAPL`, `TSLA`) and Indian (`RELIANCE.NS`, `TCS.NS`) stocks
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Install Dependencies
 
@@ -36,7 +36,7 @@ The app will open at `http://localhost:8501` in your browser.
 3. Click **"Train Model & Predict"**
 4. View the forecast chart and performance metrics
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -45,7 +45,7 @@ The app will open at `http://localhost:8501` in your browser.
 | Data | Yahoo Finance (yfinance) |
 | Preprocessing | scikit-learn (MinMaxScaler) |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app.py              # Streamlit web app (entry point)
@@ -55,6 +55,6 @@ The app will open at `http://localhost:8501` in your browser.
 └── README.md           # This file
 ```
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This project is for **educational purposes only**. Stock markets are inherently unpredictable. Do not use these predictions for actual trading or investment decisions.
