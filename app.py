@@ -227,10 +227,22 @@ st.markdown("""
         background: linear-gradient(90deg, #82aaff, #c792ea) !important;
     }
 
+    /* ── Keep header mounted so the collapsed-sidebar control stays usable ── */
+    [data-testid="stHeader"] {
+        background: transparent;
+    }
+    [data-testid="collapsedControl"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    [data-testid="collapsedControl"] button,
+    [data-testid="collapsedControl"] svg {
+        color: #ccd6f6 !important;
+    }
+
     /* ── Hide Streamlit branding ── */
     #MainMenu { visibility: hidden; }
     footer { visibility: hidden; }
-    header { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
