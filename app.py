@@ -231,12 +231,15 @@ st.markdown("""
     [data-testid="stHeader"] {
         background: transparent;
     }
-    [data-testid="collapsedControl"] {
+    [data-testid="collapsedControl"],
+    [data-testid="stSidebarCollapsedControl"] {
         opacity: 1 !important;
         visibility: visible !important;
     }
     [data-testid="collapsedControl"] button,
-    [data-testid="collapsedControl"] svg {
+    [data-testid="collapsedControl"] svg,
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="stSidebarCollapsedControl"] svg {
         color: #ccd6f6 !important;
     }
 
