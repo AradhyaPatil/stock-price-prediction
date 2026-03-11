@@ -754,7 +754,8 @@ if train_btn:
     def _run_training():
         try:
             train_result["history"] = train_model(
-                model, X_train, y_train, epochs=epochs, batch_size=32
+                model, X_train, y_train, epochs=epochs, batch_size=32,
+                use_early_stopping=False
             )
         except Exception as e:
             train_result["error"] = e
