@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background:
+    radial-gradient(circle at 8% -12%, rgba(111, 168, 220, 0.22), transparent 38%),
+    radial-gradient(circle at 98% 4%, rgba(202, 167, 106, 0.16), transparent 32%),
+    linear-gradient(180deg, #071521 0%, #06111a 42%, #091926 100%);
+  color: #edf3f8;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  letter-spacing: 0.01em;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(7, 17, 27, 0.85); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(111, 168, 220, 0.48), rgba(202, 167, 106, 0.36));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(111, 168, 220, 0.7); }
+
+input[type="range"] { accent-color: #caa76a; }
+
+.section-divider {
+  border-bottom: 1px solid rgba(222, 234, 245, 0.08);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.market-card {
+  background: linear-gradient(180deg, rgba(19, 42, 63, 0.96), rgba(14, 32, 49, 0.96));
+  border: 1px solid rgba(222, 234, 245, 0.08);
+  box-shadow: 0 14px 34px rgba(1, 11, 20, 0.35);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.market-chip {
+  border: 1px solid rgba(222, 234, 245, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
