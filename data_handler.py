@@ -189,6 +189,32 @@ def get_stock_info(ticker: str) -> dict:
     except Exception:
         pass
 
+    # Fast fallback: quote endpoint often includes marketCap without crumb flow
+    if not info.get("marketCap"):
+        try:
+            quote_url = f"https://query1.finance.yahoo.com/v7/finance/quote?symbols={ticker}"
+            session = requests.Session()
+            session.headers.update(_HEADERS)
+            q_resp = session.get(quote_url, timeout=8)
+            if q_resp.status_code == 200:
+                q_data = q_resp.json()
+                result = q_data.get("quoteResponse", {}).get("result", [])
+                if result:
+                    q = result[0]
+                    mcap = q.get("marketCap")
+                    if mcap and mcap > 0:
+                        info["marketCap"] = mcap
+                    if not info.get("longName"):
+                        info["longName"] = q.get("longName", q.get("shortName", ticker))
+                        info["shortName"] = q.get("shortName", ticker)
+                    if not info.get("currentPrice"):
+                        info["currentPrice"] = q.get("regularMarketPrice")
+                        info["regularMarketPrice"] = q.get("regularMarketPrice")
+                    if not info.get("previousClose"):
+                        info["previousClose"] = q.get("regularMarketPreviousClose")
+        except Exception:
+            pass
+
     # Get market cap via Yahoo cookie-crumb authenticated API
     if not info.get("marketCap"):
         try:
